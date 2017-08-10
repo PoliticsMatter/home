@@ -1,0 +1,201 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>educate yourself</title>
+  
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-wide w3-padding w3-card-2"><div class="icon-bar">
+  <a style="margin-top: 2px:"></a>
+  
+</div>
+
+    <a href="#index.html" class="w3-bar-item w3-button"><b>Politics</b> Matter</a>
+    
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+     
+      <a href="#projects" class="w3-bar-item w3-button">Educate Yourself</a>
+      <a href="#about" class="w3-bar-item w3-button">Get Involved</a>
+      <a href="#contact" class="w3-bar-item w3-button">About Us</a>
+     
+    </div>
+  </div>
+</div>
+  
+
+<link rel="shortcut icon" href="https://github.com/pathtocollege/pathtocollege.github.io/blob/master/Logo%20-%20Xiomara,%20Elizabeth,%20Bushra,%20Fatima.jpg?raw=true">
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></head>
+
+<body>
+
+
+<br>
+<br>
+<br>
+ 
+
+  <title>Politics matter>> get educated</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<head>
+<style>
+</style>
+</head>
+
+    <body>
+ 
+    <div class="container-fluid bg-3 text-center"> 
+    <br>
+     <h3 style="font-family:trebuchet ms;"><class="serif"><font size= "16"><b>Educate Yourself.</b></h3>
+     <p3 style="font-family:trebuchet ms;"><class="serif"><font size="6">We believe that the first step to vigilant political involvement in the age of Trump is education. We believe in the power of truth and knowledge to shed light on ignorance and hate, and to inspire awareness of and sensitivity to diverse perspectives.</p3><br><br> 
+    </body>
+
+<head>
+<style>
+
+  .container {
+    position: relative;
+    width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .image {
+  opacity: 0.3;
+}
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  padding: 8px 16px;
+}
+
+</style>
+</head>
+
+<br>
+
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>National Security </b></p>
+  <img src="https://bloximages.newyork1.vip.townnews.com/qconline.com/content/tncms/assets/v3/editorial/2/d3/2d3cd8d0-e76d-11e6-b879-134693ea4da1/5890119a20cdb.image.jpg?resize=1200%2C800" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Today in the Trump era, we are taught to think that certain groups of people are the reason for security issues around the country. But are they really the problem?</div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>LGBTQ+ Rights </b></p>
+  <img src="http://images.indianexpress.com/2017/04/pride-759.jpg" class="img-responsive" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">LGBTQ+ rights are human rights. </div>
+  </div>
+</div>
+<br>
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>Healthcare </b></p>
+  <img src="http://l7.alamy.com/zooms/a1e08d818d8649a3a0bdf96f0f0c9453/people-support-national-health-care-plan-for-usa-bdd8tr.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">The percentage of Americans having access to health insurance is decreasing. Universal healthcare is a right.</div>
+  </div>
+</div>
+<br>
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>Gun Control</b></p>
+  <img src="https://goinswriter.com/wp-content/uploads/2012/12/connecticut-shooting-570x380.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Guns can be used to defend oneself, but not to take innocent lives. Will we change our laws so that terrorists and people with mental illnesses no longer have simple access to dangerous firearms? Do we continue to perpetuate a culture of violence?</div>
+  </div>
+</div>
+<br>
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>Women's Rights </b></p>
+  <img src="https://static01.nyt.com/images/2017/01/22/us/22march8/22march8-superJumbo.jpg" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Feminism dictates that men and women should be treated as equals. Women including those of color and queer women face a lot of injustices. The wage gap, workplace discrimination, misrepresentation, and lack of access to reproductive healthcare are just some of the many issues that women face today.</div>  
+  </div>
+</div>
+<br>
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>Foreign Policy </b></p>
+  <img src="http://www.jta.org/wp-content/uploads/2015/06/palestinianclash-1024x667.jpg" class="img-responsive" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Today in the Trump era, we are taught to think that certain groups of people are the reason for security issues around the country. But are they really the problem?</div>
+  </div>
+</div>
+
+<br>
+
+<div class="container">
+<p style="font-family:trebuchet ms;"><b>Climate Change</b></p>
+  <img src="http://legal-planet.org/wp-content/uploads/2012/10/sandy.jpeg" class="img-responsive" alt="Avatar" class="image" style="width:100%">
+  <div class="middle">
+    <div class="text">Climate change is real. It is. </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Navbar (sit on top) -->
+    
+    <!-- Float links to the right. Hide them on small screens -->
+  
+    </div>
+  </div>
+</div>
+
+</html>
