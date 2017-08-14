@@ -1,106 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>SnazzyFeed</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-</head>
-<style>
-    html, body {
-        width: 100%;
-        height: 100%;
-    }
-    body {
-        overflow-y: hidden;
-        overflow-x: scroll;
-        white-space: nowrap;
-        /*word-wrap: break-word;*/
-    }
-    .story {
-        display: inline-block;
-        width: 100vw;
-        height: 100vh;
-        background: #999;
-    }
-    .card-block {
-        position: absolute;
-        bottom: 0;
-        color: white;
-    }
-    .card-title {
-        margin-top: .2em;
-    }
-    .back-to-start {
-        position: fixed;
-        top: 50px;
-        left: 0;
-    }
-    button {
-        background: none;
-        border: none;
-        font-size: 3rem;
-        color: #EEE;
-        transition: all .3s;
-        margin: 0;
-        padding: 0 .25em;
-    }
-    button:hover {
-        color: #CCC;
-    }
-    button:focus {
-        outline:none;
-    }
-    .story {
-        background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('http://www.gopriv.com/wp-content/uploads/2015/01/new_york_times_logo_01.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-color: black;
-    }
-</style>
-<body>
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverted">
-        <a class="navbar-brand" href="#">SnazzyFeed</a>
-        <ul class="nav navbar-nav">
-            <li class="nav-item">
-                <a href="index.html" class="nav-link">Top Stories</a>
-            </li>
-            <li class="nav-item active">
-                <a href="world.html" class="nav-link">World</a>
-            </li>
-            <li class="nav-item">
-                <a href="technology.html" class="nav-link">Technology</a>
-            </li>
-            <li class="nav-item">
-                <a href="sports.html" class="nav-link">Sports</a>
-            </li>
-        </ul>
-    </nav>
-
-    <div id="vue">
-        <!-- <strong>{{someData['num_results']}}</strong> News Stories Found -->
-        <div class="back-to-start">
-            <button id="back-to-start"><i class="fa fa-arrow-circle-o-left"></i></button>
-        </div>
-        <div class="story" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6)), url('{{story['multimedia'][4]['url']}}'); background-size: cover; background-position: top-middle;" v-for="story in someData['results']">
-            <div class="card-block">
-                <span class="section" style="background: White; color: black; padding: .2em .4em; font-weight: bold; font-size: .9rem;">{{story['section']}}</span>
-                <h3 class="card-title">{{story['title']}}</h3>
-                <p class="card-text">{{story['abstract']}}</p>
-                <a class="btn btn-primary" href="{{story['url']}}">Full Story</a>
-            </div>
-        </div>
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.13/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.6.0/vue-resource.js"></script>
-
-    <script src="scripts/top-stories_world.js"></script>
-    <script src="scripts/horizontalScroll.js"></script>
-
-</body>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>educate yourself</title>
+      <meta name="viewport">
+      <link rel="stylesheet" href="build/reset.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="build/style.css">
+   </head>
+   <body>
+      <header>
+         <div class="wrap">
+            <img src="https://nimia.com/wp-content/uploads/2015/09/new-york-times-logo.jpg" alt="NYTimes"/>
+         </div>
+         </form>
+      </header
+      <script src="script.js"></script>
+   </body>
 </html>
