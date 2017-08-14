@@ -1,0 +1,30 @@
+<html>
+<!-- include jquery library -->
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.m
+in.js"
+type="text/javascript">
+</script>
+<!-- include zrssfeed functions stored in WebLearn -->
+<script
+src="https://weblearn.ox.ac.uk/access/content/public/misc/js/jq
+uery.zrssfeed.min.js"
+type="text/javascript">
+</script>
+<!-- output the rss feed within a 'DIV' with id wl-blog
+(you may use any name) -->
+<script type="text/javascript">
+$(document).ready(function () {
+$('#wlblog').rssfeed('http://rss.cnn.com/rss/cnn_us.rss',
+{
+limit: 5,
+titletag: 'h3',
+ssl: true,
+media: true,
+snippet: false
+});
+});
+</script>
+<!-- here is the DIV where the feed will appear -->
+<div id="wl-blog">&nbsp;</div>
+</html>
