@@ -1,0 +1,386 @@
+
+<dom-module id="news-element">
+    <style>
+        :host {
+            display: block;
+            width: 100%;
+            float: left;
+        }
+        #banner {
+          width: 80%;
+          max-width: 1024px;
+          min-height: 80vh;
+          max-height: 80vh;
+          background-color: #D4CDCB;
+          display: block;
+          margin: 0 auto;
+          border-radius: 10px 10px 0px 0px;
+        }
+        #content {
+          width: 100%;
+          min-height: 70vh;
+          max-height: 70vh;
+          padding: 10px 37px;
+          overflow: scroll;
+          position: relative;
+        }
+        #config {
+          display: block;
+          width: 50%;
+          max-width: 600px;
+          margin: 50px auto;
+        }
+        #cover {
+          display: none;
+          width: 100%;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.6);
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+        #config label {
+          display: inline-block;
+          margin: 5px 15px;
+          color: #eee;
+          font-weight: 100;
+          font-size: 1.1em;
+        }
+        #config input {
+          padding: 4px;
+          color: #383838;
+          font-size: 1em;
+          border-radius: 5px;
+          display: inline-block;
+          margin: 5px 5px;
+          border: none;
+          width: 100%;
+        }
+        #config button {
+          padding: 5px 13px;
+          background-color: #E8E8E8;
+          border-radius: 3px;
+          border: none;
+          margin: 5px 15px;
+          font-size: 1em;
+          font-weight: 100;
+        }
+        #header {
+          width: 100%;
+          height: 70px;
+          background-color: #FF6855;
+          border-radius: 10px 10px 0px 0px;
+          padding: 17px 37px;
+        }
+        #header img {
+          display: inline-block;
+          float: left;
+        }
+        #header span {
+          display: inline-block;
+          color: white;
+          font-weight: 100;
+          margin: 4px 0px;
+          display: none;
+          width: 80%;
+        }
+        #menu-cont {
+          display: inline-block;
+          width: 20%;
+          float: left;
+        }
+        #menu {
+          width: 45px;
+        }
+        #modalWarning {
+          display: none;
+          position: absolute;
+          width: 200px;
+          top: 40%;
+          left: 42%;
+          padding: 20px;
+          background-color: #eee;
+          text-align: center;
+          z-index: 2;
+        }
+        #modalWarning span {
+          display: block;
+          margin: 5px;
+        }
+        .resetBtn {
+          position: relative;
+          display: block;
+          width: 30%;
+          margin: 10px auto;
+          background-color: white;
+          color: red;
+        }
+        @media only screen and (max-width: 1024px) {
+            #banner {
+              width: 95%;
+              max-width: 1024px;
+            }
+        }
+        @media only screen and (max-width: 660px) {
+            :host {
+                
+            }
+            #banner {
+              min-width: 340px;
+            }
+            #content {
+              padding: 10px 15px;
+            }
+            #config {
+              width: 60%;
+              min-width: 340px;
+            }
+        }
+        @media only screen and (max-width: 370px) {
+            #banner {
+              width: 95%;
+            }
+            #banner {
+              min-width: 300px;
+            }
+            #config {
+              width: 95%;
+              margin-top: 20px;
+            }
+            #header {
+              width: 100%;
+              height: 50px;
+              background-color: #FF6855;
+              border-radius: 10px 10px 0px 0px;
+              padding: 11px 25px;
+            }
+            
+        }
+    </style>
+    <template>
+
+        <iron-ajax 
+          auto
+          id="ajaxReq" 
+          url="{{url}}" 
+          handle-as="json" 
+          last-response="{{ newsData }}" 
+          on-response="handleResponse"
+          on-error="_handleError">
+        </iron-ajax>
+
+        <!-- Seccion de botones e input para cambiar la url -->
+        <div id="config">
+            <label>URL datos</label>
+            <input type="text" value="{{url::input}}">
+            <button on-tap="menuPressed">Consultar</button>
+            <button on-tap="closeAlert">Exit</button>
+        </div>
+        
+        <!-- Cuerpo principal de la aplicacion -->
+        <div id="banner">
+          <div id="header">
+            <div id="menu-cont">
+              <img on-tap="menuPressed" id="menu" src="../../images/technology.png">
+            </div>
+            <span id="title">{{titulo}}</span>
+          </div>
+          <div id="content" >
+
+          <!-- Lista de noticias dom-repeat -->
+            <template id="entradas" is="dom-repeat" items="{{ newsData }}" >
+                <news-item titulo="{{item.title}}" texto="{{item.content}}" imagen="{{item.image}}" style="
+                display: none" ></news-item>
+            </template>
+
+          </div>
+        </div>
+
+        <!-- Modal con alertas de error -->
+        <div id="cover"></div>
+        <div id="modalWarning">
+            <span style="color: red;">Error</span>
+            <span>La URL especificada no ha sido encontrada, modifiquela e intente de nuevo</span>
+            <button id="resetBtn" on-tap="reset">OK</button>
+        </div>
+
+        
+    </template>
+
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+          is: 'news-element',
+          // Comportamientos del elemento para correr animaciones
+          behaviors: [
+            Polymer.NeonAnimatableBehavior,
+            Polymer.NeonAnimationRunnerBehavior
+          ],
+          // Propiedades del objeto news-element
+          properties: {
+              titulo: {
+                type: String,
+                notify: true,
+                value: ""
+              },
+              precache: {
+                type: Boolean,
+                value: false
+              },
+              oculto : {
+                type: Boolean,
+                value: true,
+                notify: true
+              },
+              url : {
+                  type: String,
+                  value: "scripts/news_mock.json",
+                  notify: false
+              },
+              // Configuración de las animaciones
+              animationConfig: {
+                  type: Object,
+                  value: function() {
+                      return {
+                          'entry' : [
+                              {
+                                  name: 'bounce-up-animation',
+                                  node: this.$.banner,
+                                  timing: { duration: 1200 }
+                              },
+                              {
+                                  name: 'fade-in-animation',
+                                  node: this.$.banner,
+                                  timing: { duration: 1100 }
+                              }
+                          ],
+                          'exit' : {
+                              name: 'fade-out-animation',
+                              node: this.$.banner
+                          },
+                          'elems': [{
+                              name: 'cascaded-animation',
+                              animation: 'expand-animation',
+                              transformOrigin: '0% 0',
+                              axis: 'x',
+                              timing: {
+                                delay: 100,
+                                duration: 1000
+                              }
+                          }],
+                          'goodBye1' : {
+                              name: 'bounce-away-animation',
+                              node: this.$.banner,
+                              axis: 'y',
+                              timing: { duration: 1000 }
+                          },
+                          'titleIn' : {
+                              name: 'bounce-down-animation',
+                              node: this.$.title,
+                              axis: 'y',
+                              timing: { duration: 800 }
+                          },
+                          'titleOut' : {
+                              name: 'retract-animation',
+                              node: this.$.title,
+                              axis: 'x',
+                              timing: { duration: 800 }
+                          }
+                      }
+                  }
+              }
+          },
+          // Crear listener para obtener evento de selección de ítem en news-item
+          listeners: {
+              'eventoEnHijo': 'setNewsTitle'
+          },
+          // Mostrar aplicación cuando todos los elementos hayan sido cargados
+          ready: function() {
+            this.$.banner.display = "block";
+              this.show();
+          },
+          // Ocultar modal 
+          reset: function() {
+            this.$.cover.style.display = 'none';
+            this.$.modalWarning.style.display = 'none';
+          },
+          // Obtener el ítem seleccionado, correr animación y volcar valor de título al elemento correspondiente
+          setNewsTitle: function(event) {
+            console.log(event.detail);
+            if (event.detail.opened) {
+
+                this.playAnimation('titleOut');
+                var self = this;
+                setTimeout(function(){
+                  console.log("acabado");
+                    self.titulo = "";
+                }, 300); 
+
+            } else {
+                var t = event.detail.titulo.slice(0,60);
+                this.titulo = t.concat(" ...");
+                this.$.title.style.display = "inline-block";
+                this.playAnimation('titleIn');
+            }            
+          },
+          // Únicamente animar items después de la primera llamada para generar un caché
+          handleResponse: function(e) {
+            console.log(this.precache);
+              if (this.precache) {
+                this.mostrarItems();
+              } else {
+                this.precache = !this.precache;
+              }
+          },
+          // Generar request por ajax a url
+          menuPressed: function() {
+            this.$.ajaxReq.generateRequest();
+          },
+          // Recuperar errores de llamada a api y mostrar modal con error 404
+          _handleError: function() {
+            if (this.$.ajaxReq.lastError.request.status === 404 ) {
+                this.$.cover.style.display = 'block';
+                this.$.modalWarning.style.display = 'block';
+            }
+              console.log(this.$.ajaxReq.lastError.request.status);
+          },
+          // Correr animaciones de cierre de aplicación
+          closeAlert: function() {
+            var self = this;
+            this.playAnimation('goodBye1');
+            setTimeout(function(){
+                self.$.banner.style.display = 'none';
+            }, 800);
+          },
+          // Mostrar el cuerpo de la aplicación
+          show: function() {
+              this.$.banner.style.display = 'block';
+              this.cancelAnimation();
+              this.playAnimation('entry');
+          },
+          //  Ocultar los elementos
+          hide: function() {
+              this.style.display = 'none';
+              this.cancelAnimation();
+              this.playAnimation('exit');
+          },
+
+          // Animar en cascada los elementos de noticias
+          mostrarItems: function() {
+              this.async(function() {
+                var nodeList = Polymer.dom(this.root).querySelectorAll('news-item');
+                this.animationConfig['elems'][0].nodes = Array.prototype.slice.call(nodeList);
+                for (var i = nodeList.length - 1; i >= 0; i--) {
+                  nodeList[i].style.display = "block";
+                }
+                this.playAnimation('elems');
+              })
+          }
+
+      });
+    })();
+  </script>
+</dom-module>
